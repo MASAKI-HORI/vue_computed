@@ -1,13 +1,13 @@
 <template>
   <div>
     <section>
-      <h2>console.logなし</h2>
+      <h2>console.logあり</h2>
       <label
         >入力
         <input v-model="blockCount"
       /></label>
       <div ref="row">
-          {{ blockContent }}
+        {{ blockContent2 }}
       </div>
     </section>
   </div>
@@ -21,9 +21,11 @@ export default {
     }
   },
   computed: {
-    blockContent() {
+    blockContent2() {
+      // ↓このconsole.logを出力すると「なぜか」動くようになります
+      console.log(this.blockCount)
       const rowElement = this.$refs['row']
-      // 一番最初はまたDOMにアクセスできないのでhogeを返す
+      // 一番最初はまだDOMにアクセスできないのでhogeを返す
       if (!rowElement) {
         return 'hoge'
       } else {
